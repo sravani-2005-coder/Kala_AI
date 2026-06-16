@@ -5,10 +5,10 @@ function Navbar() {
       <h1 className="text-xl font-bold">KALA</h1>
 
       <ul className="flex gap-6">
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/about">About</Link></li>
-        <li><Link to="/products">Products</Link></li>
-        <li><Link to="/login">Login</Link></li>
+        <li><Link className="hover:text-orange-200" to="/">Home</Link></li>
+        <li><Link className="hover:text-orange-200" to="/about">About</Link></li>
+        <li><Link className="hover:text-orange-200" to="/products">Products</Link></li>
+        <li><Link className="hover:text-orange-200" to="/login">Login</Link></li>
       </ul>
     </nav>
   );
