@@ -7,12 +7,11 @@ An AI-powered platform that helps handloom and handicraft artisans showcase prod
 
 ## Tech Stack
 
-* Frontend: React
-* Backend: Node.js + Express.js
-* Database: MongoDB
-* AI Integration: Gemini API
-* Authentication: JWT Authentication
-* Deployment: Vercel + Render
+* Frontend: React (Vite)
+* Styling: Tailwind CSS
+* Routing: React Router DOM
+* Version Control: Git & GitHub
+* Package Manager: npm
 
 ## Setup
 
@@ -57,3 +56,4 @@ KALA_AI
 ## Project Status
 
 Week 1: Project initialization and repository setup.
+Week 2: Frontend setup.
