@@ -13,45 +13,28 @@ An AI-powered platform that helps handloom and handicraft artisans showcase prod
 * Version Control: Git & GitHub
 * Package Manager: npm
 
-## Setup
+## Project Structure
 
-KALA_AI
-
-├── frontend
-│   ├── public
-│   │   ├── favicon.svg
-│   │   └── icons.svg
-│   │
-│   ├── src
-│   │   ├── assets
-│   │   │   ├── hero.png
-│   │   │   ├── react.svg
-│   │   │   └── vite.svg
-│   │   │
-│   │   ├── components
-│   │   │   ├── Navbar.jsx
-│   │   │   ├── Hero.jsx
-│   │   │   ├── Card.jsx
-│   │   │   └── Footer.jsx
-│   │   │
-│   │   ├── pages
-│   │   │   ├── Home.jsx
-│   │   │   ├── About.jsx
-│   │   │   ├── Products.jsx
-│   │   │   └── Login.jsx
-│   │   │
-│   │   ├── App.jsx
-│   │   ├── App.css
-│   │   ├── index.css
-│   │   └── main.jsx
-│   │
-│   ├── index.html
-│   ├── package.json
-│   ├── package-lock.json
-│   ├── vite.config.js
-│   └── .gitignore
-│
-└── README.md.
+```text
+frontend/
+├── public/
+├── src/
+│   ├── assets/
+│   ├── components/
+│   │   ├── Navbar.jsx
+│   │   ├── Hero.jsx
+│   │   ├── Card.jsx
+│   │   └── Footer.jsx
+│   ├── pages/
+│   │   ├── Home.jsx
+│   │   ├── About.jsx
+│   │   ├── Products.jsx
+│   │   └── Login.jsx
+│   ├── App.jsx
+│   └── main.jsx
+├── package.json
+└── vite.config.js
+```
 
 ## Project Status
 
