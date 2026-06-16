@@ -56,4 +56,5 @@ KALA_AI
 ## Project Status
 
 Week 1: Project initialization and repository setup.
+
 Week 2: Frontend setup.
