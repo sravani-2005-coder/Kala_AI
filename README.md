@@ -36,7 +36,7 @@ frontend/
 └── vite.config.js
 ```
 
-## Backend Setup
+## How to Run the Backend Locally
 
 ### Navigate to the backend folder
 
@@ -69,6 +69,18 @@ Server runs at:
 http://localhost:5000
 ```
 
+```
+## API Endpoints
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | /api/products | Get all products |
+| GET | /api/products/:id | Get a single product |
+| POST | /api/products | Create a product |
+| PUT | /api/products/:id | Update a product |
+| DELETE | /api/products/:id | Delete a product |
+| GET | /api/products/search?category=Handloom | Search products by category |
+```
 ## Project Status
 
 Week 1: Project initialization and repository setup.
