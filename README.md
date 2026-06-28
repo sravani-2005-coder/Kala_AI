@@ -36,8 +36,45 @@ frontend/
 └── vite.config.js
 ```
 
+## Backend Setup
+
+### Navigate to the backend folder
+
+```bash
+cd backend
+```
+
+### Install dependencies
+
+```bash
+npm install
+```
+
+### Create a `.env` file
+
+```env
+PORT=5000
+MONGO_URI=your_mongodb_connection_string
+```
+
+### Start the server
+
+```bash
+npm run dev
+```
+
+Server runs at:
+
+```
+http://localhost:5000
+```
+
 ## Project Status
 
 Week 1: Project initialization and repository setup.
 
 Week 2: Frontend setup.
+
+Week 3: Routes & Toggle button setup.
+
+Week 4: Backend setup.
