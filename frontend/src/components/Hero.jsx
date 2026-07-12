@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function Hero() {
   return (
     <section className="text-center py-20 px-6 bg-orange-50">
@@ -11,9 +13,12 @@ function Hero() {
         businesses through technology.
       </p>
 
-      <button className="bg-orange-600 text-white px-6 py-3 rounded-lg hover:bg-orange-700">
+      <Link
+        to="/products"
+        className="inline-block bg-orange-600 text-white px-6 py-3 rounded-lg hover:bg-orange-700 transition"
+      >
         Explore Products
-      </button>
+      </Link>
     </section>
   );
 }

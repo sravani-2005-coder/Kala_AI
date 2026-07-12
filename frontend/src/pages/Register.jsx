@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
-import toast from "react-hot-toast";
-function Login() {
+
+function Register() {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
+    name: "",
     email: "",
     password: "",
   });
@@ -17,23 +18,23 @@ function Login() {
     });
   };
 
-  const handleLogin = async (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
 
     try {
-      const res = await axios.post(
-        "http://localhost:5000/api/auth/login",
+      await axios.post(
+        "http://localhost:5000/api/auth/register",
         formData
       );
 
-      // Store JWT
-      localStorage.setItem("token", res.data.token);
+      alert("Registration Successful! Please Login.");
 
-      toast.success("Welcome back to KALA!");
+      navigate("/login");
 
-      navigate("/");
     } catch (error) {
-      toast.error(error.response?.data?.message || "Login Failed");
+      alert(
+        error.response?.data?.message || "Registration Failed"
+      );
     }
   };
 
@@ -42,17 +43,33 @@ function Login() {
       <div className="bg-white shadow-2xl rounded-2xl p-8 w-full max-w-md">
 
         <h1 className="text-3xl font-bold text-center text-orange-700">
-          Welcome Back 👋
+          Join KALA 🎨
         </h1>
 
         <p className="text-center text-gray-600 mt-2 mb-8">
-          Sign in to continue exploring handcrafted treasures on KALA.
+          Create your account and discover authentic handmade treasures crafted by skilled artisans.
         </p>
 
-        <form onSubmit={handleLogin} className="space-y-5">
+        <form onSubmit={handleRegister} className="space-y-5">
+
+          {/* Full Name */}
+          <div>
+            <label className="block text-gray-700 font-semibold mb-2">
+              Full Name
+            </label>
+
+            <input
+              type="text"
+              name="name"
+              placeholder="Enter your full name"
+              value={formData.name}
+              onChange={handleChange}
+              className="w-full border-2 border-gray-300 rounded-lg px-4 py-3 bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:border-orange-500"
+              required
+            />
+          </div>
 
           {/* Email */}
-
           <div>
             <label className="block text-gray-700 font-semibold mb-2">
               Email Address
@@ -61,7 +78,7 @@ function Login() {
             <input
               type="email"
               name="email"
-              placeholder="Enter your registered email"
+              placeholder="Enter your email address"
               value={formData.email}
               onChange={handleChange}
               className="w-full border-2 border-gray-300 rounded-lg px-4 py-3 bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:border-orange-500"
@@ -70,7 +87,6 @@ function Login() {
           </div>
 
           {/* Password */}
-
           <div>
             <label className="block text-gray-700 font-semibold mb-2">
               Password
@@ -79,7 +95,7 @@ function Login() {
             <input
               type="password"
               name="password"
-              placeholder="Enter your password"
+              placeholder="Create a strong password"
               value={formData.password}
               onChange={handleChange}
               className="w-full border-2 border-gray-300 rounded-lg px-4 py-3 bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:border-orange-500"
@@ -89,36 +105,20 @@ function Login() {
 
           <button
             type="submit"
-            className="w-full bg-orange-600 hover:bg-orange-700 text-white font-semibold py-3 rounded-lg transition duration-300"
+            className="w-full bg-orange-600 text-white py-3 rounded-lg font-semibold hover:bg-orange-700 transition"
           >
-            Login
+            Create Account
           </button>
-          <div className="mt-6">
-  <button
-  type="button"
-  onClick={() =>
-    (window.location.href = "http://localhost:5000/api/auth/google")
-  }
-  className="w-full mt-4 flex items-center justify-center gap-3 border-2 border-gray-300 bg-white text-gray-800 font-semibold py-3 rounded-lg shadow-sm hover:bg-gray-100 transition duration-300"
->
-  <img
-    src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
-    alt="Google"
-    className="w-5 h-5"
-  />
-  Continue with Google
-</button>
-</div>
 
         </form>
 
         <p className="text-center text-gray-600 mt-6">
-          Don't have an account?{" "}
+          Already have an account?{" "}
           <Link
-            to="/register"
+            to="/login"
             className="text-orange-600 font-semibold hover:underline"
           >
-            Register
+            Login
           </Link>
         </p>
 
@@ -127,4 +127,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Register;

@@ -7,7 +7,9 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Products from "./pages/Products";
 import Login from "./pages/Login";
-
+import ProductDetails from "./pages/ProductDetails";
+import Register from "./pages/Register";
+import ProtectedRoute from "./components/ProtectedRoute";
 function App() {
   return (
     <BrowserRouter>
@@ -17,8 +19,24 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
-          <Route path="/products" element={<Products />} />
+          <Route
+  path="/products"
+  element={
+    <ProtectedRoute>
+      <Products />
+    </ProtectedRoute>
+  }
+/>
           <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route
+  path="/products/:id"
+  element={
+    <ProtectedRoute>
+      <ProductDetails />
+    </ProtectedRoute>
+  }
+/>
         </Routes>
 
         <Footer />

@@ -1,15 +1,35 @@
-function Card({ title, description }) {
+import { Link } from "react-router-dom";
+function Card({ product }) {
   return (
-    <div className="bg-white shadow-lg rounded-lg p-6 w-80">
-      <h2 className="text-xl font-bold mb-2">{title}</h2>
+    <div className="bg-white shadow-lg rounded-lg overflow-hidden">
+      <img
+        src={product.image}
+        alt={product.name}
+        className="w-full h-96 object-contain bg-gray-100"
+      />
 
-      <p className="text-gray-600 mb-4">
-        {description}
-      </p>
+      <div className="p-5">
+       <h2 className="text-xl font-bold mt-4">
+  {product.name}
+</h2>
 
-      <button className="bg-orange-600 text-white px-4 py-2 rounded">
-        View Details
-      </button>
+<p className="text-2xl font-semibold text-orange-600 mt-2">
+  ₹{product.price}
+</p>
+
+<p className="text-gray-600 mt-3">
+  {product.description.length > 80
+    ? product.description.substring(0, 80) + "..."
+    : product.description}
+</p>
+
+<Link
+  to={`/products/${product._id}`}
+  className="inline-block mt-5 bg-orange-600 text-white px-4 py-2 rounded hover:bg-orange-700 transition"
+>
+  View Details
+</Link>
+      </div>
     </div>
   );
 }

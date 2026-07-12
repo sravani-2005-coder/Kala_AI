@@ -1,4 +1,5 @@
 import express from "express";
+import requireAuth from "../middleware/authMiddleware.js";
 import {
   getProducts,
   createProduct,
@@ -12,13 +13,13 @@ const router = express.Router();
 
 router.get("/", getProducts);
 
-router.post("/", createProduct);
+router.post("/",requireAuth, createProduct);
 
 router.get("/search", searchProducts);
 
 router.get("/:id", getProductById);
 
-router.put("/:id", updateProduct);
+router.put("/:id",requireAuth, updateProduct);
 
-router.delete("/:id", deleteProduct);
+router.delete("/:id",requireAuth, deleteProduct);
 export default router;
