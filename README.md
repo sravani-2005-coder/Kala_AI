@@ -81,6 +81,30 @@ http://localhost:5000
 | DELETE | /api/products/:id | Delete a product |
 | GET | /api/products/search?category=Handloom | Search products by category |
 ```
+
+## Setup Database
+
+1. Create a MongoDB Atlas cluster
+2. Create a database user
+3. Add IP access (0.0.0.0/0)
+4. Copy connection string
+5. Create `.env` file:
+
+MONGO_URI=your_connection_string
+PORT=5000
+
+6. Run backend:
+npm install
+npm start
+
+## Database Choice
+
+I used MongoDB (Mongoose) for this project because it provides flexible schema design, easy integration with Node.js, and is well-suited for handling dynamic product data such as artisan products.
+
+## 📊 Schema Diagram
+
+![Database Schema](./assets/schema.png)
+
 ## Project Status
 
 Week 1: Project initialization and repository setup.
@@ -90,3 +114,5 @@ Week 2: Frontend setup.
 Week 3: Routes & Toggle button setup.
 
 Week 4: Backend setup.
+
+Week5: Database connection.
