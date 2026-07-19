@@ -1,14 +1,14 @@
 function About() {
   return (
-    <div className="bg-orange-50 min-h-screen">
+    <div className="bg-orange-50 min-h-screen dark:bg-slate-900">
 
       {/* Hero Section */}
       <section className="text-center py-16 px-6">
-        <h1 className="text-5xl font-bold text-orange-700">
+        <h1 className="text-5xl font-bold text-orange-700 dark:text-slate-300  ">
           About KALA AI
         </h1>
 
-        <p className="mt-6 text-lg text-gray-700 max-w-3xl mx-auto">
+        <p className="mt-6 text-lg text-gray-700 max-w-3xl dark:text-slate-500  mx-auto">
           KALA AI is a platform dedicated to preserving India's rich handloom
           and handicraft heritage by connecting talented artisans with customers
           through technology.
@@ -18,7 +18,7 @@ function About() {
       {/* Mission & Vision */}
       <section className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 px-6 py-10">
 
-        <div className="bg-white rounded-xl shadow-lg p-8">
+        <div className="bg-white dark:bg-slate-700 rounded-xl shadow-lg p-8">
           <h2 className="text-3xl font-semibold text-orange-600 mb-4">
             🌿 Our Mission
           </h2>
@@ -53,7 +53,7 @@ function About() {
 
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-6">
 
-          <div className="bg-white p-6 rounded-xl shadow-lg text-center">
+          <div className="bg-white dark:bg-slate-800  p-6 rounded-xl shadow-lg text-center">
             <h3 className="text-2xl mb-3">🧵</h3>
             <h4 className="font-bold text-lg">Handloom Products</h4>
             <p className="text-gray-600 mt-2">
@@ -90,7 +90,7 @@ function About() {
       </section>
 
       {/* Closing Section */}
-      <section className="bg-orange-600 text-white text-center py-16 px-6">
+      <section className="bg-orange-600 text-white text-center dark:bg-slate-700 py-16 px-6">
 
         <h2 className="text-4xl font-bold mb-4">
           Preserve Tradition, Empower Artisans

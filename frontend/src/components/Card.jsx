@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 function Card({ product }) {
   return (
-    <div className="bg-white shadow-lg rounded-lg overflow-hidden">
+    <div className="bg-white shadow-lg  dark:bg-slate-800 rounded-lg overflow-hidden">
       <img
         src={product.image}
         alt={product.name}
@@ -13,7 +13,7 @@ function Card({ product }) {
   {product.name}
 </h2>
 
-<p className="text-2xl font-semibold text-orange-600 mt-2">
+<p className="text-2xl font-semibold text-orange-600 mt-2 dark:text-slate-300 mt-2">
   ₹{product.price}
 </p>
 
@@ -25,7 +25,7 @@ function Card({ product }) {
 
 <Link
   to={`/products/${product._id}`}
-  className="inline-block mt-5 bg-orange-600 text-white px-4 py-2 rounded hover:bg-orange-700 transition"
+  className="inline-block mt-5 bg-orange-600 text-white px-4 py-2 rounded hover:bg-orange-700  transition dark:bg-slate-800 "
 >
   View Details
 </Link>

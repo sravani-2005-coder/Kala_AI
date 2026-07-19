@@ -9,7 +9,7 @@ import passport from "./config/passport.js";
 import productRoutes from "./routes/productRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
 import errorHandler from "./middleware/errorMiddleware.js";
-
+import AIRoutes from "./routes/AIRoutes.js";
 dotenv.config();
 
 connectDB();
@@ -43,7 +43,7 @@ app.use(passport.session());
 // Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/products", productRoutes);
-
+app.use("/api/ai", AIRoutes);
 // Test Route
 app.get("/", (req, res) => {
   res.json({

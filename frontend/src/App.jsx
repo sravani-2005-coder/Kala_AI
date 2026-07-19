@@ -10,10 +10,12 @@ import Login from "./pages/Login";
 import ProductDetails from "./pages/ProductDetails";
 import Register from "./pages/Register";
 import ProtectedRoute from "./components/ProtectedRoute";
+import OAuthSuccess from "./pages/OAuthSuccess";
+import AIProductGenerator from "./pages/AIProductGenerator";
 function App() {
   return (
     <BrowserRouter>
-      <div className="bg-white dark:bg-gray-900 dark:text-white min-h-screen">
+      <div className="bg-white text-black dark:bg-slate-950 dark:text-slate-100  min-h-screen">
         <Navbar />
         <DarkModeToggle />
         <Routes>
@@ -36,6 +38,14 @@ function App() {
       <ProductDetails />
     </ProtectedRoute>
   }
+/>
+<Route
+  path="/oauth-success"
+  element={<OAuthSuccess />}
+/>
+<Route
+    path="/ai-generator"
+    element={<AIProductGenerator />}
 />
         </Routes>
 

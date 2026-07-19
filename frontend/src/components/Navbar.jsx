@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link,NavLink, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
 function Navbar() {
@@ -39,7 +39,14 @@ function Navbar() {
             Products
           </Link>
         </li>
-
+       <li>
+  <NavLink
+    to="/ai-generator"
+    className="hover:text-orange-200"
+  >
+    AI Generator
+  </NavLink>
+</li>
         {token ? (
           <li>
             <button
@@ -55,6 +62,7 @@ function Navbar() {
               Login
             </Link>
           </li>
+
         )}
 
       </ul>

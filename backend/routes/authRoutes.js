@@ -1,3 +1,4 @@
+import jwt from "jsonwebtoken";
 import express from "express";
 import { validationResult } from "express-validator";
 import authLimiter from "../middleware/authLimiter.js";
@@ -37,10 +38,21 @@ router.get(
   "/google/callback",
   passport.authenticate("google", {
     failureRedirect: "/login",
-    session: true,
+    session: false,
   }),
   (req, res) => {
-    res.redirect("http://localhost:5173/");
+    const token = jwt.sign(
+      {
+        id: req.user._id,
+        email: req.user.email,
+      },
+      process.env.JWT_SECRET,
+      { expiresIn: "7d" }
+    );
+
+    res.redirect(
+      `http://localhost:5173/oauth-success?token=${token}`
+    );
   }
 );
 // Register
