@@ -31,7 +31,7 @@ function Login() {
 
       toast.success("Welcome back to KALA!");
 
-      navigate("/");
+      window.location.href = "/dashboard";
     } catch (error) {
       toast.error(error.response?.data?.message || "Login Failed");
     }

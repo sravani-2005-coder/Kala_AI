@@ -12,6 +12,9 @@ import Register from "./pages/Register";
 import ProtectedRoute from "./components/ProtectedRoute";
 import OAuthSuccess from "./pages/OAuthSuccess";
 import AIProductGenerator from "./pages/AIProductGenerator";
+import Dashboard from "./pages/Dashboard";
+import AddProduct from "./pages/AddProduct";
+import EditProduct from "./pages/EditProduct";
 function App() {
   return (
     <BrowserRouter>
@@ -47,6 +50,29 @@ function App() {
     path="/ai-generator"
     element={<AIProductGenerator />}
 />
+<Route
+    path="/dashboard"
+    element={
+        <ProtectedRoute>
+            <Dashboard />
+        </ProtectedRoute>
+    }
+/>
+<Route path = "/add-product"
+  element ={
+    <ProtectedRoute>
+      <AddProduct/>
+    </ProtectedRoute>
+  }
+  />
+  <Route
+    path="/edit-product/:id"
+    element={
+      <ProtectedRoute>
+        <EditProduct/>
+      </ProtectedRoute>
+    }
+    />
         </Routes>
 
         <Footer />

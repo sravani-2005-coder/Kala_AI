@@ -35,7 +35,7 @@ setResult(response.data);
   };
 
   return (
-    <div className="min-h-screen bg-orange-50 p-8">
+    <div className="min-h-screen bg-orange-50 px-4 py-6 md:p-8">
 
       <h1 className="text-4xl font-bold text-center text-orange-700 mb-2">
         ✨ Kala AI Product Studio

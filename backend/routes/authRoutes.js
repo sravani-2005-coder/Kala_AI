@@ -6,13 +6,14 @@ import passport from "passport";
 import {
   registerUser,
   loginUser,
+  getCurrentUser,
 } from "../controllers/authController.js";
-
+import requireAuth from "../middleware/authMiddleware.js";
 import {
   registerValidation,
   loginValidation,
 } from "../validators/authValidator.js";
-
+import User from "../models/User.js";
 const router = express.Router();
 
 // Validation middleware
@@ -71,4 +72,17 @@ router.post(
   validate,
   loginUser
 );
+router.get(
+  "/me",
+  requireAuth,
+  getCurrentUser
+);
+router.get("/profile", requireAuth, async (req, res) => {
+  const user = await User.findById(req.user.id).select("-password");
+
+  res.json({
+    success: true,
+    user,
+  });
+});
 export default router;
