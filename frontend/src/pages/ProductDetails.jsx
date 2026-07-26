@@ -61,6 +61,7 @@ function ProductDetails() {
         <img
           src={product.image}
           alt={product.name}
+          loading="lazy"
           className="w-full max-h-[500px] object-contain rounded-xl shadow-lg bg-amber-50 p-4"
         />
 

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 export default function AIForm({ onGenerate, loading }) {
   const [formData, setFormData] = useState({
@@ -16,6 +17,32 @@ export default function AIForm({ onGenerate, loading }) {
     });
   };
 
+  const handleSubmit = () => {
+    if (
+      !formData.name ||
+      !formData.category ||
+      !formData.material ||
+      !formData.features
+    ) {
+      toast.error("Please fill all the fields.");
+      return;
+    }
+
+    onGenerate(formData);
+  };
+
+  const clearForm = () => {
+    setFormData({
+      name: "",
+      category: "",
+      material: "",
+      features: "",
+      tone: "Professional",
+    });
+
+    toast.success("Form cleared.");
+  };
+
   const tones = [
     "Professional",
     "Luxury",
@@ -24,7 +51,7 @@ export default function AIForm({ onGenerate, loading }) {
   ];
 
   return (
-    <div className="bg-white rounded-2xl shadow-lg p-6">
+    <div className="bg-white rounded-2xl shadow-xl p-6">
 
       <h2 className="text-2xl font-bold mb-6">
         🧶 Product Information
@@ -35,17 +62,16 @@ export default function AIForm({ onGenerate, loading }) {
         placeholder="Product Name"
         value={formData.name}
         onChange={handleChange}
-        className="w-full border p-3 rounded-lg mb-4"
+        className="w-full border rounded-lg p-3 mb-4 focus:ring-2 focus:ring-orange-500 outline-none"
       />
 
       <select
         name="category"
         value={formData.category}
         onChange={handleChange}
-        className="w-full border p-3 rounded-lg mb-4"
+        className="w-full border rounded-lg p-3 mb-4 focus:ring-2 focus:ring-orange-500 outline-none"
       >
-        <option value="">Category</option>
-
+        <option value="">Select Category</option>
         <option>Saree</option>
         <option>Shawl</option>
         <option>Jewelry</option>
@@ -56,10 +82,9 @@ export default function AIForm({ onGenerate, loading }) {
         name="material"
         value={formData.material}
         onChange={handleChange}
-        className="w-full border p-3 rounded-lg mb-4"
+        className="w-full border rounded-lg p-3 mb-4 focus:ring-2 focus:ring-orange-500 outline-none"
       >
-        <option value="">Material</option>
-
+        <option value="">Select Material</option>
         <option>Silk</option>
         <option>Cotton</option>
         <option>Jute</option>
@@ -67,12 +92,12 @@ export default function AIForm({ onGenerate, loading }) {
       </select>
 
       <textarea
-        rows="4"
+        rows={5}
         name="features"
-        placeholder="Handwoven, Natural Dyes..."
+        placeholder="Example: Handwoven, Eco-friendly, Natural Dyes..."
         value={formData.features}
         onChange={handleChange}
-        className="w-full border p-3 rounded-lg mb-6"
+        className="w-full border rounded-lg p-3 mb-6 resize-none focus:ring-2 focus:ring-orange-500 outline-none"
       />
 
       <h3 className="font-semibold mb-3">
@@ -80,9 +105,7 @@ export default function AIForm({ onGenerate, loading }) {
       </h3>
 
       <div className="grid grid-cols-2 gap-3 mb-8">
-
         {tones.map((tone) => (
-
           <button
             key={tone}
             type="button"
@@ -92,41 +115,34 @@ export default function AIForm({ onGenerate, loading }) {
                 tone,
               })
             }
-            className={`rounded-lg p-3 border ${
+            className={`rounded-lg py-3 transition ${
               formData.tone === tone
                 ? "bg-orange-600 text-white"
-                : "bg-white"
+                : "border hover:bg-orange-100"
             }`}
           >
             {tone}
           </button>
-
         ))}
-
       </div>
 
       <button
         disabled={loading}
-        onClick={() => onGenerate(formData)}
-        className="w-full bg-orange-600 hover:bg-orange-700 text-white py-4 rounded-xl"
+        onClick={handleSubmit}
+        className="w-full bg-orange-600 hover:bg-orange-700 disabled:bg-orange-300 text-white py-4 rounded-xl font-semibold transition"
       >
-        {loading ? "Generating..." : "🚀 Generate with AI"}
+        {loading
+          ? "Generating AI Content..."
+          : "🚀 Generate with AI"}
       </button>
+
       <button
-  type="button"
-  onClick={() =>
-    setFormData({
-      name: "",
-      category: "",
-      material: "",
-      features: "",
-      tone: "Professional",
-    })
-  }
-  className="mt-3 w-full border border-orange-600 text-orange-600 hover:bg-orange-50 py-3 rounded-xl"
->
-  Clear Form
-</button>
+        type="button"
+        onClick={clearForm}
+        className="mt-3 w-full border border-orange-600 text-orange-600 hover:bg-orange-50 py-3 rounded-xl transition"
+      >
+        Clear Form
+      </button>
 
     </div>
   );

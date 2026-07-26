@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 import Loader from "../components/ui/Loader";
 import EmptyState from "../components/ui/EmptyState";
-
+import { useMemo,useCallback } from "react";
 function Dashboard() {
   const [user, setUser] = useState(null);
   const [products, setProducts] = useState([]);
@@ -14,7 +14,7 @@ function Dashboard() {
   const token = localStorage.getItem("token");
 
   useEffect(() => {
-    const fetchDashboard = async () => {
+    const fetchDashboard = useCallback(async () => {
       try {
         setLoading(true);
 
@@ -39,10 +39,13 @@ function Dashboard() {
       } finally {
         setLoading(false);
       }
-    };
+    });
 
     fetchDashboard();
   }, [token]);
+  useEffect(()=>{
+    fetchDashboard();
+  },[fetchDashboard]);
 
   if (loading) {
     return (
@@ -153,6 +156,7 @@ function Dashboard() {
                 <img
                   src={product.image}
                   alt={product.name}
+                  loading="lazy"
                   className="w-full h-56 md:h-64 object-contain rounded-lg bg-amber-50"
                 />
 
