@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 import Card from "../components/Card";
 import Loader from "../components/ui/Loader";
 import EmptyState from "../components/ui/EmptyState";
-import { useCallback } from "react";
+
 function Products() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);

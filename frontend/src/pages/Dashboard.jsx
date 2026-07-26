@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 
 import Loader from "../components/ui/Loader";
 import EmptyState from "../components/ui/EmptyState";
-import { useMemo,useCallback } from "react";
+
 function Dashboard() {
   const [user, setUser] = useState(null);
   const [products, setProducts] = useState([]);
@@ -13,39 +13,36 @@ function Dashboard() {
 
   const token = localStorage.getItem("token");
 
-  useEffect(() => {
-    const fetchDashboard = useCallback(async () => {
-      try {
-        setLoading(true);
+  const fetchDashboard = useCallback(async () => {
+    try {
+      setLoading(true);
 
-        const profile = await axios.get(
-          "http://localhost:5000/api/auth/profile",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+      const profile = await axios.get(
+        "http://localhost:5000/api/auth/profile",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
-        const productRes = await axios.get(
-          "http://localhost:5000/api/products"
-        );
+      const productRes = await axios.get(
+        "http://localhost:5000/api/products"
+      );
 
-        setUser(profile.data.user);
-        setProducts(productRes.data.slice(0, 3));
-      } catch (error) {
-        console.error(error);
-        toast.error("Failed to load dashboard");
-      } finally {
-        setLoading(false);
-      }
-    });
-
-    fetchDashboard();
+      setUser(profile.data.user);
+      setProducts(productRes.data.slice(0, 3));
+    } catch (error) {
+      console.error(error);
+      toast.error("Failed to load dashboard");
+    } finally {
+      setLoading(false);
+    }
   }, [token]);
-  useEffect(()=>{
+
+  useEffect(() => {
     fetchDashboard();
-  },[fetchDashboard]);
+  }, [fetchDashboard]);
 
   if (loading) {
     return (
