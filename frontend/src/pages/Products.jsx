@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 
 import Card from "../components/Card";
 import Loader from "../components/ui/Loader";
+import EmptyState from "../components/ui/EmptyState";
 
 function Products() {
   const [products, setProducts] = useState([]);
@@ -37,37 +38,24 @@ function Products() {
       </p>
 
       {loading ? (
+        <div className="flex justify-center py-20">
+          <Loader />
+        </div>
+      ) : products.length === 0 ? (
+        <EmptyState
+          title="No Products Yet"
+          message="There are no artisan products available right now."
+          buttonText="Add Product"
+          buttonLink="/add-product"
+        />
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {products.map((product) => (
+            <Card key={product._id} product={product} />
+          ))}
+        </div>
+      )}
 
-<div className="flex justify-center py-20">
-
-<Loader />
-
-</div>
-
-) : products.length === 0 ? (
-
-<p className="text-center text-gray-500">
-
-No Products Found
-
-</p>
-
-) : (
-
-<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-{products.map((product)=>(
-
-<Card
-key={product._id}
-product={product}
-/>
-
-))}
-
-</div>
-
-)}
     </div>
   );
 }
