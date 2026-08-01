@@ -10,7 +10,7 @@ import Login from "./pages/Login";
 import ProductDetails from "./pages/ProductDetails";
 import Register from "./pages/Register";
 import ProtectedRoute from "./components/ProtectedRoute";
-import OAuthSuccess from "./pages/OAuthSuccess";
+import OAuthSuccess from "./pages/OauthSuccess";
 import AIProductGenerator from "./pages/AIProductGenerator";
 import Dashboard from "./pages/Dashboard";
 import AddProduct from "./pages/AddProduct";
