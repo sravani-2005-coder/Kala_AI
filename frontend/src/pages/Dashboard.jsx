@@ -18,7 +18,7 @@ function Dashboard() {
       setLoading(true);
 
       const profile = await axios.get(
-        "http://localhost:5000/api/auth/profile",
+        `${import.meta.env.VITE_API_URL}/api/auth/profile`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -27,7 +27,7 @@ function Dashboard() {
       );
 
       const productRes = await axios.get(
-        "http://localhost:5000/api/products"
+        `${import.meta.env.VITE_API_URL}/api/products`
       );
 
       setUser(profile.data.user);

@@ -23,7 +23,7 @@ function EditProduct() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/api/products/${id}`)
+      .get(`${import.meta.env.VITE_API_URL}/api/products/${id}`)
       .then((res) => {
         setFormData(res.data);
         setLoading(false);
@@ -45,7 +45,7 @@ function EditProduct() {
 
     try {
       await axios.put(
-        `http://localhost:5000/api/products/${id}`,
+        `${import.meta.env.VITE_API_URL}api/products/${id}`,
         formData,
         {
           headers: {

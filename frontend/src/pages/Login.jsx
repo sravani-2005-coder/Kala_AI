@@ -22,7 +22,7 @@ function Login() {
 
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/auth/login",
+        `${import.meta.env.VITE_API_URL}/api/auth/login`,
         formData
       );
 
@@ -97,7 +97,7 @@ function Login() {
   <button
   type="button"
   onClick={() =>
-    (window.location.href = "http://localhost:5000/api/auth/google")
+    (window.location.href = `${import.meta.env.VITE_API_URL}/api/auth/google`)
   }
   className="w-full mt-4 flex items-center justify-center gap-3 border-2 border-gray-300 bg-white text-gray-800 font-semibold py-3 rounded-lg shadow-sm hover:bg-gray-100 transition duration-300"
 >
