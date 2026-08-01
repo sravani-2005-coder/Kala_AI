@@ -1,4 +1,4 @@
-import { generateProductDescription } from "../services/geminiService.js";
+import { generateProductDescription } from "../services/GeminiService.js";
 export const generateDescription = async (req, res) => {
   console.log("AI endpoint hit!");
 
