@@ -105,14 +105,44 @@ I used MongoDB (Mongoose) for this project because it provides flexible schema d
 
 ![Database Schema](./assets/schema.png)
 
-## Project Status
+## 🌐 Deployment
 
-Week 1: Project initialization and repository setup.
+### Live Frontend URL
+https://kala-ai-frontend-lake.vercel.app
 
-Week 2: Frontend setup.
+### Live Backend URL
+https://kala-ai-fhj7.onrender.com
 
-Week 3: Routes & Toggle button setup.
+---
 
-Week 4: Backend setup.
+## 🛠️ Tech Stack
 
-Week5: Database connection.
+### Frontend
+- React.js (Vite)
+- React Router DOM
+- Tailwind CSS
+- Axios
+- React Hot Toast
+
+### Backend
+- Node.js
+- Express.js
+- MongoDB Atlas
+- Mongoose
+- JWT Authentication
+- Passport.js (Google OAuth)
+- Google Gemini AI API
+
+### Deployment
+- Frontend: Vercel
+- Backend: Render
+- Database: MongoDB Atlas
+
+---
+
+## ⚠️ Known Limitations (Free Tier)
+
+- The backend is hosted on **Render Free Tier**.
+- After approximately **15 minutes of inactivity**, the backend service automatically spins down.
+- The first request after inactivity may take **30–60 seconds** while the service wakes up.
+- Google OAuth is currently under configuration and may require additional setup for production deployment.
