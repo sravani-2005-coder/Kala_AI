@@ -20,7 +20,7 @@ const app = express();
 app.use(
   cors({
     origin:["http://localhost:5173",
-    "https://kala-ai-frontend-lake.vercel.app"], 
+    "https://kala-ai-frontend-fhzcr0hga-sravani2.vercel.app/"], 
     credentials: true,
   })
 );
