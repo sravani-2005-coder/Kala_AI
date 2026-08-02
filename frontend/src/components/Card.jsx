@@ -14,7 +14,7 @@ function Card({ product, onDelete }) {
       const token = localStorage.getItem("token");
 
       await axios.delete(
-        `http://localhost:5000/api/products/${product._id}`,
+        `${import.meta.env.VITE_API_URL}/api/products/${product._id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
