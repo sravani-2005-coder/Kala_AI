@@ -52,7 +52,7 @@ router.get(
     );
 
     res.redirect(
-      `http://localhost:5173/oauth-success?token=${token}`
+      `${process.env.CLIENT_URL}/oauth-success?token=${token}`
     );
   }
 );
