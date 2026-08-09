@@ -1,148 +1,342 @@
-# Kala_AI
-The application is designed for handloom weavers, handicraft artisans, self-help groups, and small-scale entrepreneurs who often struggle to market their products beyond local communities. The platform will help them establish a digital presence, reach a wider customer base, and receive practical business guidance to improve their income.
+# 🧶 KALA AI
 
-## One-Line Description
+### AI-Assisted Digital Marketplace for Indian Handloom & Handicraft Artisans
 
-An AI-powered platform that helps handloom and handicraft artisans showcase products, receive business guidance, and connect directly with customers.
+KALA AI is a full-stack web platform designed to digitally empower Indian handloom and handicraft artisans by providing them with an online marketplace to showcase and manage their handcrafted products.
 
-## Tech Stack
-
-* Frontend: React (Vite)
-* Styling: Tailwind CSS
-* Routing: React Router DOM
-* Version Control: Git & GitHub
-* Package Manager: npm
-
-## Project Structure
-
-```text
-frontend/
-├── public/
-├── src/
-│   ├── assets/
-│   ├── components/
-│   │   ├── Navbar.jsx
-│   │   ├── Hero.jsx
-│   │   ├── Card.jsx
-│   │   └── Footer.jsx
-│   ├── pages/
-│   │   ├── Home.jsx
-│   │   ├── About.jsx
-│   │   ├── Products.jsx
-│   │   └── Login.jsx
-│   ├── App.jsx
-│   └── main.jsx
-├── package.json
-└── vite.config.js
-```
-
-## How to Run the Backend Locally
-
-### Navigate to the backend folder
-
-```bash
-cd backend
-```
-
-### Install dependencies
-
-```bash
-npm install
-```
-
-### Create a `.env` file
-
-```env
-PORT=5000
-MONGO_URI=your_mongodb_connection_string
-```
-
-### Start the server
-
-```bash
-npm run dev
-```
-
-Server runs at:
-
-```
-http://localhost:5000
-```
-
-```
-## API Endpoints
-
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | /api/products | Get all products |
-| GET | /api/products/:id | Get a single product |
-| POST | /api/products | Create a product |
-| PUT | /api/products/:id | Update a product |
-| DELETE | /api/products/:id | Delete a product |
-| GET | /api/products/search?category=Handloom | Search products by category |
-```
-
-## Setup Database
-
-1. Create a MongoDB Atlas cluster
-2. Create a database user
-3. Add IP access (0.0.0.0/0)
-4. Copy connection string
-5. Create `.env` file:
-
-MONGO_URI=your_connection_string
-PORT=5000
-
-6. Run backend:
-npm install
-npm start
-
-## Database Choice
-
-I used MongoDB (Mongoose) for this project because it provides flexible schema design, easy integration with Node.js, and is well-suited for handling dynamic product data such as artisan products.
-
-## 📊 Schema Diagram
-
-![Database Schema](./assets/schema.png)
-
-## 🌐 Deployment
-
-### Live Frontend URL
-https://kala-ai-frontend-lake.vercel.app
-
-### Live Backend URL
-https://kala-ai-fhj7.onrender.com
+The platform combines a modern e-commerce experience with AI-assisted product content generation, secure authentication, database-backed product management, and cloud deployment.
 
 ---
 
-## 🛠️ Tech Stack
+## 📌 Project Overview
 
-### Frontend
-- React.js (Vite)
-- React Router DOM
+Traditional artisans often face challenges in reaching wider markets and presenting their products effectively online.
+
+KALA AI aims to bridge this gap by providing a digital platform where artisans can:
+
+- Showcase handcrafted products
+- Manage product information
+- View products through an online marketplace
+- Add, edit and manage products
+- Generate AI-assisted product descriptions
+- Create secure accounts
+- Authenticate using email/password
+- Use Google OAuth authentication
+- Store product and user information in MongoDB
+
+The project was developed as part of the **TBI-GEU Internship AI-Assisted Full Stack Development Capstone**.
+
+---
+
+# ✨ Features
+
+## 🛍️ Product Marketplace
+
+- Browse artisan products
+- View product details
+- Product categories
+- Product images
+- Product descriptions
+- Product pricing
+- Artisan information
+
+## 📦 Product Management
+
+Authenticated users can:
+
+- Add products
+- View products
+- Edit products
+- Delete products
+- Store product information in MongoDB
+
+## 🤖 AI Product Studio
+
+KALA AI includes an AI-assisted product content generator.
+
+Users can provide:
+
+- Product name
+- Category
+- Material
+- Product features
+- Desired writing tone
+
+The AI system generates a professional product description that can be copied and used for product listings.
+
+## 🔐 Authentication
+
+The application supports:
+
+- User registration
+- Email/password login
+- JWT authentication
+- Protected routes
+- User profile
+- Google OAuth login
+
+## 🌓 Dark Mode
+
+The frontend includes a responsive dark-mode interface for improved usability and accessibility.
+
+## 📱 Responsive UI
+
+The application is designed to work across:
+
+- Desktop
+- Tablet
+- Mobile devices
+
+---
+
+# 🛠️ Tech Stack
+
+## Frontend
+
+- React.js
+- Vite
 - Tailwind CSS
 - Axios
+- React Router
 - React Hot Toast
 
-### Backend
+## Backend
+
 - Node.js
 - Express.js
+- REST APIs
+- Passport.js
+- JWT Authentication
+- Express Validator
+
+## Database
+
+- MongoDB
 - MongoDB Atlas
 - Mongoose
-- JWT Authentication
-- Passport.js (Google OAuth)
-- Google Gemini AI API
 
-### Deployment
-- Frontend: Vercel
-- Backend: Render
-- Database: MongoDB Atlas
+## AI
+
+- Generative AI API
+- AI-assisted product description generation
+
+## Authentication
+
+- JWT
+- Google OAuth 2.0
+- Passport.js
+- bcryptjs
+
+## Deployment
+
+- Vercel — Frontend
+- Render — Backend
+- MongoDB Atlas — Database
 
 ---
 
-## ⚠️ Known Limitations (Free Tier)
+# 🏗️ System Architecture
 
-- The backend is hosted on **Render Free Tier**.
-- After approximately **15 minutes of inactivity**, the backend service automatically spins down.
-- The first request after inactivity may take **30–60 seconds** while the service wakes up.
-- Google OAuth is currently under configuration and may require additional setup for production deployment.
+```text
+                    ┌──────────────────────┐
+                    │      KALA AI         │
+                    │      Frontend        │
+                    │   React + Vite       │
+                    └──────────┬───────────┘
+                               │
+                               │ REST API
+                               ▼
+                    ┌──────────────────────┐
+                    │      Express.js      │
+                    │       Backend        │
+                    └──────────┬───────────┘
+                               │
+             ┌─────────────────┼─────────────────┐
+             │                 │                 │
+             ▼                 ▼                 ▼
+      ┌────────────┐    ┌─────────────┐   ┌─────────────┐
+      │  MongoDB   │    │ JWT / OAuth │   │ AI Service  │
+      │   Atlas    │    │    Auth     │   │             │
+      └────────────┘    └─────────────┘   └─────────────┘
+
+## Project Structure
+Kala_AI/
+│
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── services/
+│   │   ├── App.jsx
+│   │   └── main.jsx
+│   │
+│   ├── public/
+│   ├── package.json
+│   └── vite.config.js
+│
+├── backend/
+│   ├── config/
+│   ├── controllers/
+│   ├── middleware/
+│   ├── models/
+│   ├── routes/
+│   ├── validators/
+│   ├── server.js
+│   ├── package.json
+│   └── .env.example
+│
+├── screenshots/
+│
+├── README.md
+└── .gitignore
+
+---
+
+# 🤖 AI Product Studio
+
+KALA AI includes an AI-powered Product Studio that helps artisans and sellers create professional product descriptions for their handmade products.
+
+Users can enter details such as:
+
+- Product name
+- Category
+- Material
+- Product features
+- Preferred writing tone
+
+The information is sent to the backend AI service, which generates a suitable product description.
+
+### AI Workflow
+
+```text
+Product Information
+        ↓
+AI Product Studio
+        ↓
+Frontend Form
+        ↓
+Express.js Backend
+        ↓
+AI Service
+        ↓
+Generated Product Description
+        ↓
+AI Output
+        ↓
+Copy Generated Content
+
+---
+
+# 🔐 Authentication
+
+KALA AI implements secure user authentication using JWT-based authentication.
+
+### Authentication Features
+
+- User registration
+- Email and password login
+- Password hashing using bcryptjs
+- JWT token generation
+- Protected API routes
+- User profile access
+- Google OAuth 2.0 authentication
+
+### Email/Password Authentication Flow
+
+```text
+User Registration
+        ↓
+Password Hashing
+        ↓
+MongoDB
+        ↓
+User Login
+        ↓
+Credentials Verification
+        ↓
+JWT Token Generation
+        ↓
+Authenticated Requests
+
+
+# Google Login
+KALA AI Login
+      ↓
+Google Authentication
+      ↓
+Google OAuth Callback
+      ↓
+User Verification / Creation
+      ↓
+JWT Generation
+      ↓
+Authenticated Application
+
+---
+
+# 🚀 Deployment
+
+KALA AI uses a cloud-based deployment architecture.
+
+### Frontend
+
+The React + Vite frontend is deployed using **Vercel**.
+
+### Backend
+
+The Node.js + Express backend is deployed using **Render**.
+
+### Database
+
+The application uses **MongoDB Atlas** as the cloud database.
+
+### Deployment Architecture
+
+```text
+User
+ │
+ ▼
+Vercel
+React + Vite Frontend
+ │
+ │ HTTPS REST API
+ ▼
+Render
+Node.js + Express Backend
+ │
+ ├──────────────► MongoDB Atlas
+ │
+ └──────────────► AI Service
+
+
+
+---
+
+# Step 6 — Add Live Demo
+
+Now add:
+
+```markdown
+---
+
+# 🌐 Live Demo
+
+### Frontend
+
+https://kala-ai-frontend-lake.vercel.app
+
+### Backend
+
+https://kala-ai-fhj7.onrender.com
+
+The frontend communicates with the deployed Express.js backend through REST APIs.
+
+> Note: The Render free-tier backend may take some time to wake up after a period of inactivity.
+
+---
+
+# 🎥 Demo Video
+
+A complete demonstration of KALA AI is available below:
+
+[▶️ Watch KALA AI Demo Video](PASTE_YOUR_VIDEO_LINK_HERE)
