@@ -16,46 +16,60 @@ export default function AIProductGenerator() {
 
       const response = await generateProductDescription(formData);
 
-console.log(response);
+      console.log(response);
 
-setResult(response.data);
+      setResult(response.data);
 
       toast.success("AI content generated successfully!");
     } catch (error) {
-  console.error("Full Error:", error);
+      console.error("Full Error:", error);
 
-  if (error.response) {
-    console.log("Backend Response:", error.response.data);
-  }
+      if (error.response) {
+        console.log("Backend Response:", error.response.data);
+      }
 
-  toast.error("Failed to generate AI content.");
-} finally {
+      toast.error("Failed to generate AI content.");
+    } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen bg-orange-50 px-4 py-6 md:p-8">
+    <div className="min-h-screen bg-white text-gray-900 dark:bg-slate-950 dark:text-slate-100 px-6 py-12 transition-colors duration-300">
 
-      <h1 className="text-4xl font-bold text-center text-orange-700 mb-2">
-        ✨ Kala AI Product Studio
-      </h1>
+      {/* Page Header */}
+      <div className="max-w-7xl mx-auto">
 
-      <p className="text-center text-gray-600 mb-10">
-        Generate premium AI-powered content for artisan products.
-      </p>
+        <h1 className="text-4xl md:text-5xl font-bold text-center text-orange-700 dark:text-orange-400 mb-3">
+          ✨ Kala AI Product Studio
+        </h1>
 
-      <div className="grid lg:grid-cols-2 gap-8">
+        <p className="text-center text-gray-600 dark:text-slate-300 mb-10 text-lg">
+          Generate premium AI-powered content for artisan products.
+        </p>
 
-        <AIForm
-          onGenerate={handleGenerate}
-          loading={loading}
-        />
 
-        <AIOutput
-          loading={loading}
-          result={result}
-        />
+        {/* AI Form + Output */}
+        <div className="grid lg:grid-cols-2 gap-8">
+
+          {/* AI Form */}
+          <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg p-6 transition-colors duration-300">
+            <AIForm
+              onGenerate={handleGenerate}
+              loading={loading}
+            />
+          </div>
+
+
+          {/* AI Output */}
+          <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg p-6 transition-colors duration-300">
+            <AIOutput
+              loading={loading}
+              result={result}
+            />
+          </div>
+
+        </div>
 
       </div>
 

@@ -17,6 +17,7 @@ function Dashboard() {
     try {
       setLoading(true);
 
+      // Fetch user profile
       const profile = await axios.get(
         `${import.meta.env.VITE_API_URL}/api/auth/profile`,
         {
@@ -26,6 +27,7 @@ function Dashboard() {
         }
       );
 
+      // Fetch products
       const productRes = await axios.get(
         `${import.meta.env.VITE_API_URL}/api/products`
       );
@@ -44,42 +46,55 @@ function Dashboard() {
     fetchDashboard();
   }, [fetchDashboard]);
 
+  // Loading state
   if (loading) {
     return (
-      <div className="flex justify-center items-center h-screen">
+      <div className="min-h-screen flex items-center justify-center bg-white dark:bg-slate-950">
         <Loader />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-orange-50 px-4 py-6 md:px-8 md:py-10">
-
+    <div className="min-h-screen bg-orange-50 dark:bg-slate-950 px-6 py-10 transition-colors duration-300">
+      
       {/* Welcome */}
-      <h1 className="text-3xl md:text-4xl font-bold text-orange-700 mb-8">
+      <h1 className="text-3xl md:text-4xl font-bold text-orange-700 dark:text-orange-400 mb-8">
         Welcome back, {user?.name} 👋
       </h1>
 
       {/* Statistics */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
 
-        <div className="bg-white rounded-xl shadow-lg p-6">
-          <h3 className="text-gray-500">Products</h3>
-          <p className="text-4xl font-bold text-orange-600 mt-3">
+        {/* Products */}
+        <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg p-6 transition-colors duration-300">
+          <h3 className="text-gray-500 dark:text-slate-400">
+            Products
+          </h3>
+
+          <p className="text-4xl font-bold text-orange-600 dark:text-orange-400 mt-3">
             {products.length}
           </p>
         </div>
 
-        <div className="bg-white rounded-xl shadow-lg p-6">
-          <h3 className="text-gray-500">AI Generator</h3>
-          <p className="text-4xl font-bold text-orange-600 mt-3">
+        {/* AI Generator */}
+        <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg p-6 transition-colors duration-300">
+          <h3 className="text-gray-500 dark:text-slate-400">
+            AI Generator
+          </h3>
+
+          <p className="text-4xl font-bold text-orange-600 dark:text-orange-400 mt-3">
             Ready
           </p>
         </div>
 
-        <div className="bg-white rounded-xl shadow-lg p-6">
-          <h3 className="text-gray-500">Email</h3>
-          <p className="mt-3 break-all text-gray-700">
+        {/* Email */}
+        <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg p-6 transition-colors duration-300">
+          <h3 className="text-gray-500 dark:text-slate-400">
+            Email
+          </h3>
+
+          <p className="mt-3 break-all text-gray-700 dark:text-slate-200">
             {user?.email}
           </p>
         </div>
@@ -87,9 +102,9 @@ function Dashboard() {
       </div>
 
       {/* Quick Actions */}
-      <div className="bg-white rounded-xl shadow-lg p-6 mb-10">
+      <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg p-6 mb-10 transition-colors duration-300">
 
-        <h2 className="text-2xl font-bold mb-6">
+        <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-slate-100">
           Quick Actions
         </h2>
 
@@ -128,9 +143,9 @@ function Dashboard() {
       </div>
 
       {/* Recent Products */}
-      <div className="bg-white rounded-xl shadow-lg p-6">
+      <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg p-6 transition-colors duration-300">
 
-        <h2 className="text-2xl font-bold mb-6">
+        <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-slate-100">
           Recently Added Products
         </h2>
 
@@ -147,24 +162,28 @@ function Dashboard() {
             {products.map((product) => (
               <div
                 key={product._id}
-                className="border rounded-xl p-4 hover:shadow-lg transition"
+                className="border border-gray-200 dark:border-slate-600 bg-white dark:bg-slate-700 rounded-xl p-4 hover:shadow-lg transition-all duration-300"
               >
 
+                {/* Product Image */}
                 <img
                   src={product.image}
                   alt={product.name}
                   loading="lazy"
-                  className="w-full h-56 md:h-64 object-contain rounded-lg bg-amber-50"
+                  className="w-full h-56 md:h-64 object-contain rounded-lg bg-amber-50 dark:bg-slate-600"
                 />
 
-                <h3 className="font-bold text-lg mt-4">
+                {/* Product Name */}
+                <h3 className="font-bold text-lg mt-4 text-gray-900 dark:text-slate-100">
                   {product.name}
                 </h3>
 
-                <p className="text-orange-600 font-bold text-xl mt-2">
+                {/* Price */}
+                <p className="text-orange-600 dark:text-orange-400 font-bold text-xl mt-2">
                   ₹{product.price}
                 </p>
 
+                {/* Buttons */}
                 <div className="flex flex-col sm:flex-row gap-3 mt-5">
 
                   <Link

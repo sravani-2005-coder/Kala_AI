@@ -4,11 +4,9 @@ import Loader from "./ui/Loader";
 import AIOutputCard from "./AIOutputCard";
 
 export default function AIOutput({ loading, result }) {
-
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {
-
     try {
       await navigator.clipboard.writeText(result);
 
@@ -19,31 +17,35 @@ export default function AIOutput({ loading, result }) {
       setTimeout(() => {
         setCopied(false);
       }, 2000);
-
     } catch {
       toast.error("Copy failed.");
     }
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-xl p-6 min-h-[650px] flex flex-col">
+    <div className="flex flex-col h-full text-gray-900 dark:text-slate-100 transition-colors duration-300">
 
-      <h2 className="text-2xl font-bold mb-6">
+      {/* Heading */}
+      <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-slate-100">
         🤖 AI Generated Content
       </h2>
 
+
+      {/* Loading State */}
       {loading && (
-        <div className="flex flex-col justify-center items-center flex-1">
+        <div className="flex flex-col justify-center items-center flex-1 text-center">
 
           <Loader />
 
-          <p className="mt-6 text-gray-500 animate-pulse">
+          <p className="mt-6 text-gray-500 dark:text-slate-400 animate-pulse">
             AI is crafting the perfect product description...
           </p>
 
         </div>
       )}
 
+
+      {/* Empty State */}
       {!loading && !result && (
         <div className="flex flex-col justify-center items-center flex-1 text-center">
 
@@ -51,32 +53,39 @@ export default function AIOutput({ loading, result }) {
             ✨
           </div>
 
-          <h3 className="text-2xl font-semibold mb-2">
+          <h3 className="text-2xl font-semibold mb-2 text-gray-900 dark:text-slate-100">
             Ready to Generate
           </h3>
 
-          <p className="text-gray-500 max-w-sm">
-            Fill in the product details on the left and click
-            <strong> Generate with AI </strong>
+          <p className="text-gray-500 dark:text-slate-400 max-w-sm leading-6">
+            Fill in the product details on the left and click{" "}
+            <strong className="text-gray-700 dark:text-slate-200">
+              Generate with AI
+            </strong>{" "}
             to receive a professional product description.
           </p>
 
         </div>
       )}
 
+
+      {/* Generated Result */}
       {!loading && result && (
-        <>
+        <div className="flex flex-col flex-1">
 
           <AIOutputCard content={result} />
 
+          {/* Copy Button */}
           <button
             onClick={handleCopy}
-            className="mt-6 bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg transition"
+            className="mt-6 bg-blue-600 hover:bg-blue-700
+            text-white py-3 rounded-lg
+            transition duration-300 font-semibold"
           >
             {copied ? "✅ Copied" : "📋 Copy Output"}
           </button>
 
-        </>
+        </div>
       )}
 
     </div>
