@@ -8,6 +8,17 @@ The platform combines a modern e-commerce experience with AI-assisted product co
 
 ---
 
+# 🌐 Live Demo
+
+### Frontend
+[KALA AI Live Application](https://kala-ai-frontend-lake.vercel.app/)
+
+### Backend API
+[KALA AI Backend API](https://kala-ai-fhj7.onrender.com/)
+
+The KALA AI frontend is deployed on Vercel, while the backend REST API is deployed on Render.
+The application uses MongoDB Atlas for persistent database storage.
+- - -
 ## 📌 Project Overview
 
 Traditional artisans often face challenges in reaching wider markets and presenting their products effectively online.
@@ -317,21 +328,6 @@ Node.js + Express Backend
 Now add:
 
 ```markdown
----
-
-# 🌐 Live Demo
-
-### Frontend
-
-https://kala-ai-frontend-lake.vercel.app
-
-### Backend
-
-https://kala-ai-fhj7.onrender.com
-
-The frontend communicates with the deployed Express.js backend through REST APIs.
-
-> Note: The Render free-tier backend may take some time to wake up after a period of inactivity.
 
 ---
 
